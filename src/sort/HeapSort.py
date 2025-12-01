@@ -1,5 +1,9 @@
+from src.Benchmark import timeit_once
+
+
 class HeapSort:
     @staticmethod
+    @timeit_once
     def heap_sort(a: list[int]) -> list[int]:
         def heapify(list_to_heapify: list, quantity: int, index: int):
             """
@@ -27,6 +31,7 @@ class HeapSort:
         n = len(a)
 
         # make Max Heap
+        # it changes initial list a
         for i in range(n // 2 - 1, -1, -1):
             heapify(list_to_heapify=a, quantity=n, index=i)
 

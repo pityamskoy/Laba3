@@ -1,5 +1,9 @@
+from src.Benchmark import timeit_once
+
+
 class BubbleSort:
     @staticmethod
+    @timeit_once
     def bubble_sort(a: list[int]) -> list[int]:
         n = len(a)
 

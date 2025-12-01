@@ -1,7 +1,12 @@
+from src.Benchmark import timeit_once
+
+
 class CountingSort:
     @staticmethod
+    @timeit_once
     def counting_sort(a: list[int]) -> list[int]:
-        max_val = max(a)
+        offset = -min(a)
+        max_val = max(a) + offset
         count = [0] * (max_val + 1)
         output = [0] * len(a)
 
@@ -9,7 +14,7 @@ class CountingSort:
         frequency of each element
         """
         for num in a:
-            count[num] += 1
+            count[num + offset] += 1
 
         """
         Something happens there what I don't understand.
@@ -24,11 +29,8 @@ class CountingSort:
         according to previous steps.
         """
         for num in reversed(a):
-            output[count[num] - 1] = num
-            count[num] -= 1
+            offset_index = num + offset
+            output[count[offset_index] - 1] = num
+            count[offset_index] -= 1
 
-        # for i in range(len(a)):
-        #    a[i] = output[i]
-
-        # return a were there initially
         return output
