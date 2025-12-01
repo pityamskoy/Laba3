@@ -1,5 +1,4 @@
 import random
-import sys
 
 from src.math.Factorial import Factorial
 from src.math.Fibo import Fibo
@@ -11,10 +10,10 @@ from src.sort.QuickSort import QuickSort
 from src.sort.RadixSort import RadixSort
 
 
-class Main:
+class Generator:
     @staticmethod
-    def main() -> None:
-        const_for_testing_math_block:int = 8
+    def generate_test_cases() -> None:
+        const_for_testing_math_block: int = 8
         print(Factorial.factorial(const_for_testing_math_block))
         print(Factorial.factorial_recursive_timed(const_for_testing_math_block))
         print(Fibo.fibo(const_for_testing_math_block))
@@ -24,14 +23,9 @@ class Main:
         random_array_int_for_radix = [random.randint(0, 2000) for _ in range(4000)]
         random_array_float = [random.uniform(0.0, 1) for _ in range(4000)]
 
-        sys.setrecursionlimit(100000)
-
         print(BubbleSort.bubble_sort(random_array_int))
         print(CountingSort.counting_sort(random_array_int))
         print(HeapSort.heap_sort(random_array_int))
         print(QuickSort.quick_sort_timed(random_array_int))
         print(RadixSort.radix_sort(random_array_int_for_radix))
         print(BucketSort.bucket_sort(random_array_float))
-
-if __name__ == "__main__":
-    Main.main()
